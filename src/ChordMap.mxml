@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   minWidth="281"
+					   minHeight="708"
+					   creationComplete="onCreationComplete(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			private var crdColor:uint = 0x0000FF;
+			[Bindable]
+			private var fontSizeFirst:uint = 92;
+			[Bindable]
+			private var fontSizeBig:uint = 54;
+			[Bindable]
+			private var fontSizeSmall:uint = 36;
+			
+
+			[Bindable]
+			private var crdN1:String;
+			[Bindable]
+			private var crdN2:String;
+			[Bindable]
+			private var crdN3:String;
+			[Bindable]
+			private var crdN4:String;
+			[Bindable]
+			private var crdN5:String;
+			[Bindable]
+			private var crdN6:String;
+			
+			private var allKeys:Dictionary; 
+			
+			
+			private var crdNamesForSelectedKey:Array;
+			private var currentKeyIndex:uint = 0;
+			private var currentKey:String;
+			private var allSimpleMapKeys:Array = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
+			private var crdVars:Array = [ "crdN1", "crdN2", "crdN3", "crdN4", "crdN5", "crdN6" ];
+			
+			protected function onCreationComplete(event:FlexEvent):void {
+				allKeys = new Dictionary();
+				
+				allKeys["C"] = ["C","Dm","Em","F","G","Am"];
+				allKeys["Db"] = ["Db","Ebm","Fm","Gb","Ab","Bbm"];
+				allKeys["D"] = ["D","Em","F#m","Gm","A","Bm"];
+				allKeys["Eb"] = ["Eb","Fm","Gm","Ab","Bb","Cm"];
+				allKeys["E"] = ["E","F#m","G#m","A","B","C#m"];
+				allKeys["F"] = ["F","Gm","Am","Bb","C","Dm"];
+				allKeys["Gb"] = ["Gb","Abm","Bbm","C","D","Ebm"];
+				allKeys["G"] = ["G","Am","Bm","C","D","Em"];
+				allKeys["Ab"] = ["Ab","Bbm","Cm","Db","Eb","Fm"];
+				allKeys["A"] = ["A","Bm","C#m","D","E","F#m"];
+				allKeys["Bb"] = ["Bb","Cm","Dm","Eb","F","Gm"];
+				allKeys["B"] = ["B","C#m","D#m","E","F#","G#m"];
+				
+//				minorChords["A"] = [1];
+//				minorChords["B"] = [1];
+//				minorChords["C"] = [1,2,5];
+//				minorChords["D"] = [1];
+//				minorChords["E"] = [1];
+//				minorChords["F"] = [1];
+//				minorChords["G"] = [1];
+				setupChordNames();
+			}
+			
+
+			private function setupChordNames():void {
+//				crdNames = reindexChords(allMajorChords, keyChordIndex);
+//				applyMinorChords(crdNames);
+				crdNamesForSelectedKey = allKeys[allSimpleMapKeys[currentKeyIndex]];
+				crdVars.forEach(function (item:*, index:int, array:Array):void{
+					this[item] = crdNamesForSelectedKey[index];
+				}, this);
+			}
+			
+//			private function applyMinorChords(chords:Array):void {
+//				minorChords[chords[0]].forEach(function (item:*, index:int, array:Array):void{
+//					this[item] = this[item] + "m";
+//				}, chords);
+//			}
+//			private function reindexChords(arrayToReorg:Array, startingAt:uint):Array {
+//				var firstPart:Array = arrayToReorg.slice(startingAt);
+//				var secondPart:Array = arrayToReorg.slice(0, startingAt);
+//				return firstPart.concat(secondPart);
+//			}
+			
+			protected function onSliderChange(event:Event):void {
+				currentKeyIndex = event.target.value - 1; 
+				setupChordNames();
+			}
+			
+			private function keySliderDataTipFormatter(value:Number):Object {
+				return allSimpleMapKeys[keySlider.value-1];
+			}
+		]]>
+	</fx:Script>
+
+	<s:SkinnableContainer id="bg" skinClass="skins.AppBGSkin" />
+		
+	<s:Group>
+		<s:Label id="crd1" text="{crdN1}" x="23" y="536" fontSize="{fontSizeFirst}" fontWeight="bold" color="{crdColor}" />
+		<s:Label id="crd2a" text="{crdN2}" x="43" y="31" fontSize="{fontSizeSmall}" fontWeight="bold" color="{crdColor}" />
+		<s:Label id="crd2b" text="{crdN2}" x="170" y="345" fontSize="{fontSizeSmall}" fontWeight="bold" color="{crdColor}" />
+		<s:Label id="crd3" text="{crdN3}" x="44" y="153" fontSize="{fontSizeSmall}" fontWeight="bold" color="{crdColor}" />
+		<s:Label id="crd4" text="{crdN4}" x="45" y="277" fontSize="{fontSizeBig}" fontWeight="bold" color="{crdColor}" />
+		<s:Label id="crd5a" text="{crdN5}" x="47" y="402" fontSize="{fontSizeBig}" fontWeight="bold" color="{crdColor}" />
+		<s:Label id="crd5b" text="{crdN5}" x="170" y="98" fontSize="{fontSizeBig}" fontWeight="bold" color="{crdColor}" />
+		<s:Label id="crd6" text="{crdN6}" x="170" y="221" fontSize="{fontSizeSmall}" fontWeight="bold" color="{crdColor}" />
+		<s:HSlider id="keySlider" minimum="1" maximum="12" x="20" y="658" change="onSliderChange(event)" value="0" dataTipFormatFunction="keySliderDataTipFormatter" />
+	</s:Group>
+
+</s:WindowedApplication>
