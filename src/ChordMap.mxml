@@ -18,6 +18,9 @@
 			[Bindable]
 			private var fontSizeSmall:uint = 36;
 			
+			[Bindable]
+			private var instructions:String = "Drag the slider button or use your arrow keys to generate a simple map for the desired key";
+			
 
 			[Bindable]
 			private var crdN1:String;
@@ -58,8 +61,26 @@
 				allKeys["B"] = ["B","C#m","D#m","E","F#","G#m"];
 
 				setupChordNames();
+				
+				addKeyListeners();
+				keySlider.setFocus();
 			}
-			
+			private function addKeyListeners():void {
+				allUIComponents.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+			}
+
+			private function onKeyDown(event:KeyboardEvent):void {
+				switch (event.keyCode) {
+					case Keyboard.KEYNAME_UPARROW : 
+					case Keyboard.KEYNAME_RIGHTARROW :
+						keySlider.value++;
+						break;
+					case Keyboard.KEYNAME_DOWNARROW : 
+					case Keyboard.KEYNAME_LEFTARROW :
+						keySlider.value--;
+						break;
+				}
+			}
 
 			private function setupChordNames():void {
 
@@ -80,9 +101,13 @@
 		]]>
 	</fx:Script>
 
-	<s:SkinnableContainer id="bg" skinClass="skins.AppBGSkin" />
+	<s:SkinnableContainer id="bg" skinClass="skins.AppBGSkin" >
+		<s:HSlider id="keySlider" minimum="1" maximum="12" x="154" y="528" change="onSliderChange(event)" value="0" dataTipFormatFunction="keySliderDataTipFormatter" />
+		<s:Label id="lblInstructions" x="156" y="547" width="98" height="111" fontSize="12"
+				 text="{instructions}"/>
+	</s:SkinnableContainer>
 		
-	<s:Group>
+	<s:Group id="allUIComponents">
 		<s:Label id="crd1" text="{crdN1}" x="23" y="536" fontSize="{fontSizeFirst}" fontWeight="bold" color="{crdColor}" />
 		<s:Label id="crd2a" text="{crdN2}" x="40" y="31" fontSize="{fontSizeSmall}" fontWeight="bold" color="{crdColor}" />
 		<s:Label id="crd2b" text="{crdN2}" x="165" y="345" fontSize="{fontSizeSmall}" fontWeight="bold" color="{crdColor}" />
@@ -91,7 +116,7 @@
 		<s:Label id="crd5a" text="{crdN5}" x="40" y="402" fontSize="{fontSizeBig}" fontWeight="bold" color="{crdColor}" />
 		<s:Label id="crd5b" text="{crdN5}" x="165" y="98" fontSize="{fontSizeBig}" fontWeight="bold" color="{crdColor}" />
 		<s:Label id="crd6" text="{crdN6}" x="165" y="221" fontSize="{fontSizeSmall}" fontWeight="bold" color="{crdColor}" />
-		<s:HSlider id="keySlider" minimum="1" maximum="12" x="20" y="658" change="onSliderChange(event)" value="0" dataTipFormatFunction="keySliderDataTipFormatter" />
+		
 	</s:Group>
 
 </s:WindowedApplication>
