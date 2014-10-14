@@ -18,11 +18,11 @@
 	<id>com.rodnolan.SimpleChordMap</id>
 
 	<!-- Used as the filename for the application. Required. -->
-	<filename>ChordMap</filename>
+	<filename>TheSimpleChordMapGenerator</filename>
 
 	<!-- The name that is displayed in the AIR application installer. 
 	May have multiple values for each language. See samples or xsd schema file. Optional. -->
-	<name>ChordMap</name>
+	<name>The Simple Chord Map Generator</name>
 	
 	<!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade. 
 	Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -30,14 +30,14 @@
 	<versionNumber>0.0.0</versionNumber>
 		         
 	<!-- A string value (such as "v1", "2.5", or "Alpha 1") that represents the version of the application, as it should be shown to users. Optional. -->
-	<!-- <versionLabel></versionLabel> -->
+	<versionLabel>version 0.1</versionLabel>
 
 	<!-- Description, displayed in the AIR application installer.
 	May have multiple values for each language. See samples or xsd schema file. Optional. -->
-	<!-- <description></description> -->
+	<description>A simple application that allows you to quickly view the chords of the simple map in any key. Based on and inspired by the work of Stephen Mugglin at chordmaps.com</description>
 
 	<!-- Copyright information. Optional -->
-	<!-- <copyright></copyright> -->
+	<copyright>2014, Rod Nolan</copyright>
 
 	<!-- Publisher ID. Used if you're updating an application created prior to 1.5.3 -->
 	<!-- <publisherID></publisherID> -->
@@ -52,7 +52,7 @@
 		<!-- <title></title> -->
 
 		<!-- The type of system chrome to use (either "standard" or "none"). Optional. Default standard. -->
-<!-- 		<systemChrome>none</systemChrome> -->
+		<!-- <systemChrome>none</systemChrome> -->
 
 		<!-- Whether the window is transparent. Only applicable when systemChrome is none. Optional. Default false. -->
 		<!-- <transparent></transparent> -->
@@ -118,10 +118,10 @@
 	<!-- <supportedProfiles>desktop extendedDesktop mobileDevice extendedMobileDevice</supportedProfiles> -->
 
 	<!-- The subpath of the standard default installation location to use. Optional. -->
-	<!-- <installFolder></installFolder> -->
+	<installFolder>TheSimpleChordMapGenerator</installFolder>
 
 	<!-- The subpath of the Programs menu to use. (Ignored on operating systems without a Programs menu.) Optional. -->
-	<!-- <programMenuFolder></programMenuFolder> -->
+	<programMenuFolder>The Simple Chord Map Generator</programMenuFolder>
 
 	<!-- The icon the system uses for the application. For at least one resolution,
 	specify the path to a PNG file included in the AIR package. Optional. -->

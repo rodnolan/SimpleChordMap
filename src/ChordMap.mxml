@@ -5,8 +5,7 @@
 					   minWidth="281"
 					   minHeight="708"
 					   creationComplete="onCreationComplete(event)"
-					   status="based on the maps found at http://www.chordmaps.com"
-					   title="The Simple Map">
+					   status="based on the maps found at http://www.chordmaps.com">
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
