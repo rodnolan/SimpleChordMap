@@ -4,7 +4,9 @@
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
 					   minWidth="281"
 					   minHeight="708"
-					   creationComplete="onCreationComplete(event)">
+					   creationComplete="onCreationComplete(event)"
+					   status="based on the maps found at http://www.chordmaps.com"
+					   title="The Simple Map">
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
