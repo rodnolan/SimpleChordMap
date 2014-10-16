@@ -1,0 +1,108 @@
+<?xml version="1.0" standalone="no"?>
+<!-- Generator: Adobe Fireworks 10, Export SVG Extension by Aaron Beall (http://fireworks.abeall.com) . Version: 0.6.0  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg id="SimpleChordMapBackgroundWithVector" viewBox="0 0 281 668" style="background-color:#ffffff00" version="1.1"
+	xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+	x="0px" y="0px" width="281px" height="668px"
+>
+	<g id="rectangles">
+		<g id="R-I">
+			<path d="M 14 539.4213 C 14 530.3567 17.3567 527 26.4213 527 L 135.5787 527 C 144.6434 527 148 530.3567 148 539.4213 L 148 648.5787 C 148 657.6433 144.6434 661 135.5787 661 L 26.4213 661 C 17.3567 661 14 657.6433 14 648.5787 L 14 539.4213 Z" stroke="#000000" stroke-width="2" fill="none"/>
+		</g>
+		<g id="R-V1">
+			<path d="M 36 400.25 C 36 394.2294 38.2294 392 44.25 392 L 116.75 392 C 122.7706 392 125 394.2294 125 400.25 L 125 472.75 C 125 478.7706 122.7706 481 116.75 481 L 44.25 481 C 38.2294 481 36 478.7706 36 472.75 L 36 400.25 Z" stroke="#000000" stroke-width="2" fill="none"/>
+		</g>
+		<g id="R-ii-1">
+			<path d="M 161 343.25 C 161 337.2294 163.2294 335 169.25 335 L 241.75 335 C 247.7706 335 250 337.2294 250 343.25 L 250 415.75 C 250 421.7706 247.7706 424 241.75 424 L 169.25 424 C 163.2294 424 161 421.7706 161 415.75 L 161 343.25 Z" stroke="#000000" stroke-width="2" fill="none"/>
+		</g>
+		<g id="R-IV">
+			<path d="M 36 276.25 C 36 270.2294 38.2294 268 44.25 268 L 116.75 268 C 122.7706 268 125 270.2294 125 276.25 L 125 348.75 C 125 354.7706 122.7706 357 116.75 357 L 44.25 357 C 38.2294 357 36 354.7706 36 348.75 L 36 276.25 Z" stroke="#000000" stroke-width="2" fill="none"/>
+		</g>
+		<g id="R-vi">
+			<path d="M 161 219.25 C 161 213.2294 163.2294 211 169.25 211 L 241.75 211 C 247.7706 211 250 213.2294 250 219.25 L 250 291.75 C 250 297.7706 247.7706 300 241.75 300 L 169.25 300 C 163.2294 300 161 297.7706 161 291.75 L 161 219.25 Z" stroke="#000000" stroke-width="2" fill="none"/>
+		</g>
+		<g id="R-iii">
+			<path d="M 36 152.25 C 36 146.2294 38.2294 144 44.25 144 L 116.75 144 C 122.7706 144 125 146.2294 125 152.25 L 125 224.75 C 125 230.7706 122.7706 233 116.75 233 L 44.25 233 C 38.2294 233 36 230.7706 36 224.75 L 36 152.25 Z" stroke="#000000" stroke-width="2" fill="none"/>
+		</g>
+		<g id="R-V-2">
+			<path d="M 161 95.25 C 161 89.2294 163.2294 87 169.25 87 L 241.75 87 C 247.7706 87 250 89.2294 250 95.25 L 250 167.75 C 250 173.7706 247.7706 176 241.75 176 L 169.25 176 C 163.2294 176 161 173.7706 161 167.75 L 161 95.25 Z" stroke="#000000" stroke-width="2" fill="none"/>
+		</g>
+		<g id="R-ii-2">
+			<path d="M 36 28.25 C 36 22.2294 38.2294 20 44.25 20 L 116.75 20 C 122.7706 20 125 22.2294 125 28.25 L 125 100.75 C 125 106.7706 122.7706 109 116.75 109 L 44.25 109 C 38.2294 109 36 106.7706 36 100.75 L 36 28.25 Z" stroke="#000000" stroke-width="2" fill="none"/>
+		</g>
+	</g>
+	<g id="arrows">
+		<g id="diagonal%20arrows">
+			<g id="ii%20-%20V">
+				<path d="M 155.4454 102.0975 L 160 111 L 150.0128 110.4932 L 155.4454 102.0975 Z" stroke="#000000" stroke-width="2" fill="#000000"/>
+				<path d="M 126 89 L 126 89 L 126 89 " stroke="#000000" stroke-width="2" fill="none"/>
+				<path d="M 124.5 88.1667 L 160 111 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+			<g id="iii%20-%20vi">
+				<path d="M 155.4454 224.0975 L 160 233 L 150.0128 232.4932 L 155.4454 224.0975 Z" stroke="#000000" stroke-width="2" fill="#000000"/>
+				<path d="M 126 211 L 126 211 L 126 211 " stroke="#000000" stroke-width="2" fill="none"/>
+				<path d="M 125 210.1667 L 160 233 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+			<g id="IV%20-%20ii">
+				<path d="M 155.4454 349.0975 L 160 358 L 150.0128 357.4932 L 155.4454 349.0975 Z" stroke="#000000" stroke-width="2" fill="#000000"/>
+				<path d="M 126 336 L 126 336 L 126 336 " stroke="#000000" stroke-width="2" fill="none"/>
+				<path d="M 124.8333 335.3333 L 160 358 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+			<g id="ii%20-%20V2">
+				<path d="M 130.5546 417.0975 L 126 426 L 135.9872 425.4932 L 130.5546 417.0975 Z" stroke="#000000" stroke-width="2" fill="#000000"/>
+				<path d="M 160 404 L 160 404 L 160 404 " stroke="#000000" stroke-width="2" fill="none"/>
+				<path d="M 161.1667 403.1667 L 126 426 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+			<g id="vi%20-%20IV">
+				<path d="M 130.5546 293.0975 L 126 302 L 135.9872 301.4932 L 130.5546 293.0975 Z" stroke="#000000" stroke-width="2" fill="#000000"/>
+				<path d="M 160 280 L 160 280 L 160 280 " stroke="#000000" stroke-width="2" fill="none"/>
+				<path d="M 161 279 L 127 301 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+			<g id="V%20-%20iii">
+				<path d="M 130.5546 168.0975 L 126 177 L 135.9872 176.4932 L 130.5546 168.0975 Z" stroke="#000000" stroke-width="2" fill="#000000"/>
+				<path d="M 160 155 L 160 155 L 160 155 " stroke="#000000" stroke-width="2" fill="none"/>
+				<path d="M 161.3333 154.3333 L 126 177 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+		</g>
+		<g id="down%20arrows">
+			<g id="ii%20-%20iii">
+				<path d="M 87 134.5064 L 82 143.1667 L 77 134.5064 L 87 134.5064 Z" stroke="#000000" stroke-width="1" fill="#000000"/>
+				<path d="M 82 111 L 82 111 L 82 111 " fill="none"/>
+				<path d="M 82 109.25 L 82 143.1667 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+			<g id="V%20-%20vi">
+				<path d="M 210 201.5064 L 205 210.1667 L 200 201.5064 L 210 201.5064 Z" stroke="#000000" stroke-width="1" fill="#000000"/>
+				<path d="M 205 176 L 205 176 L 205 176 " fill="none"/>
+				<path d="M 205 176 L 205 210.1667 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+			<g id="iii%20-%20IV">
+				<path d="M 87 259.5064 L 82 268.1667 L 77 259.5064 L 87 259.5064 Z" stroke="#000000" stroke-width="1" fill="#000000"/>
+				<path d="M 82 234 L 82 234 L 82 234 " fill="none"/>
+				<path d="M 82 232.875 L 82 267.4375 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+			<g id="vi%20-%20ii">
+				<path d="M 211 325.5064 L 206 334.1667 L 201 325.5064 L 211 325.5064 Z" stroke="#000000" stroke-width="1" fill="#000000"/>
+				<path d="M 206 301 L 206 301 L 206 301 " fill="none"/>
+				<path d="M 206 301 L 206 333.1667 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+			<g id="IV%20-%20V">
+				<path d="M 87 383.5064 L 82 392.1667 L 77 383.5064 L 87 383.5064 Z" stroke="#000000" stroke-width="1" fill="#000000"/>
+				<path d="M 82 359 L 82 359 L 82 359 " fill="none"/>
+				<path d="M 82 357.75 L 82 391.6667 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+			<g id="V%20-%20I">
+				<path d="M 87 517.3397 L 82 526 L 77 517.3397 L 87 517.3397 Z" stroke="#000000" stroke-width="1" fill="#000000"/>
+				<path d="M 82 481 L 82 481 L 82 481 " fill="none"/>
+				<path d="M 82 482 L 82 527 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+		</g>
+		<g id="IV%20-%20I%20%28group%29">
+			<path d="M 49.1667 357.1667 L 14 392 L 14 493 " stroke="#000000" stroke-width="2" fill="none"/>
+			<g>
+				<path d="M 44.4118 516.3408 L 47 526 L 37.3407 523.4118 L 44.4118 516.3408 Z" stroke="#000000" stroke-width="2" fill="#000000"/>
+				<path d="M 13.9063 492.9063 L 13.9063 492.9063 L 13.9063 492.9063 L 13.9063 492.9063 Z" stroke="#000000" stroke-width="2" fill="none"/>
+				<path d="M 13.7188 492.25 L 47 526 " stroke="#000000" stroke-width="2" fill="none"/>
+			</g>
+		</g>
+	</g>
+</svg>
