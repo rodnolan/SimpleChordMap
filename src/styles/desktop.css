@@ -1,0 +1,21 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+
+.rootCrd {
+	fontSize: 64;
+	fontWeight: bold;
+	color: #0000FF;
+}
+.minorCrd {
+	fontSize: 36;
+	fontWeight: bold;
+	color: #FF0000;
+}
+.majorCrd {
+	fontSize: 54;
+	fontWeight: bold;
+	color: #FF0000;
+}
+
