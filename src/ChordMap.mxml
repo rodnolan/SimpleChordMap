@@ -20,7 +20,7 @@
 			private var fontSizeSmall:uint = 36;
 			
 			[Bindable]
-			private var instructions:String = "Drag the slider button or use your arrow keys to generate a simple map for the desired key";
+			private var instructions:String = "Drag the slider button, use your arrow keys or type the name of a major key to generate a simple map";
 			
 
 			[Bindable]
@@ -42,10 +42,13 @@
 			private var crdNamesForSelectedKey:Array;
 			private var currentKeyIndex:uint = 0;
 			private var currentKey:String;
-			private var allSimpleMapKeys:Array = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
-			private var crdVars:Array = [ "crdN1", "crdN2", "crdN3", "crdN4", "crdN5", "crdN6" ];
+			private var allSimpleMapKeys:Array;
+			private var crdVars:Array; 
 			
 			protected function onCreationComplete(event:FlexEvent):void {
+				allSimpleMapKeys = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
+				crdVars = [ "crdN1", "crdN2", "crdN3", "crdN4", "crdN5", "crdN6" ];
+				
 				allKeys = new Dictionary();
 				
 				allKeys["C"] = ["C","Dm","Em","F","G","Am"];
@@ -60,50 +63,118 @@
 				allKeys["A"] = ["A","Bm","C#m","D","E","F#m"];
 				allKeys["Bb"] = ["Bb","Cm","Dm","Eb","F","Gm"];
 				allKeys["B"] = ["B","C#m","D#m","E","F#","G#m"];
-
-				setupChordNames();
 				
 				addKeyListeners();
 				keySlider.setFocus();
+				allUIComponents.setFocus();
+				setupChordNames();
 			}
+			
+			private function setupChordNames():void {
+				if (currentKeyIndex >= 0 && currentKeyIndex < allSimpleMapKeys.length) {
+					crdNamesForSelectedKey = allKeys[allSimpleMapKeys[currentKeyIndex]];
+					crdVars.forEach(function (item:*, index:int, array:Array):void{
+						this[item] = crdNamesForSelectedKey[index];
+					}, this);
+				}
+			}
+			
 			private function addKeyListeners():void {
-				allUIComponents.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+				this.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 			}
 
 			private function onKeyDown(event:KeyboardEvent):void {
-				switch (event.keyCode) {
-					case Keyboard.KEYNAME_UPARROW : 
-					case Keyboard.KEYNAME_RIGHTARROW :
-						keySlider.value++;
+				var keyCode:int = event.keyCode;
+				var desiredKey:String; 
+				var keyThatWasPressed:String;
+
+				switch (keyCode) {
+					case Keyboard.C : // index 0;  key 1
+					case Keyboard.D : // index 2;  key 3
+					case Keyboard.E : // index 4;  key 5
+					case Keyboard.F : // index 5;  key 6 
+					case Keyboard.G : // index 7;  key 8
+					case Keyboard.A : // index 9;  key 0 
+					case Keyboard.B : // index 11; key 
+						keyThatWasPressed = String.fromCharCode(event.keyCode); 
+						currentKeyIndex = allSimpleMapKeys.indexOf(keyThatWasPressed);
+						trace("desiredKey: " + keyThatWasPressed + " " + "(" + keyCode  + ")" + " was requested from index " + currentKeyIndex);
 						break;
-					case Keyboard.KEYNAME_DOWNARROW : 
-					case Keyboard.KEYNAME_LEFTARROW :
-						keySlider.value--;
+					
+					case 37 : // LEFT
+					case 40 : // DOWN
+						keyThatWasPressed = "left or down";
+						trace("desiredKey: " + keyThatWasPressed + " " + "(" + keyCode  + ")" + " was requested from index " + currentKeyIndex);
+						
+						if (currentKeyIndex > 0) {
+							currentKeyIndex--;
+						} else { 
+							currentKeyIndex = allSimpleMapKeys.length-1;
+						}
+						break;
+					
+					case 38 : // UP
+					case 39 : // RIGHT
+						keyThatWasPressed = "right or up";
+						trace("desiredKey: " + keyThatWasPressed + " " + "(" + keyCode  + ")" + " was requested from index " + currentKeyIndex);
+						if (currentKeyIndex < allSimpleMapKeys.length-1) {
+							currentKeyIndex++;
+						} else { 
+							currentKeyIndex = 0;
+						}
+						break;
+
+					case 49 : // 1 == C
+					case 50 : // 2 == Db
+					case 51 : // 3 == D
+					case 52 : // 4 == Eb
+					case 53 : // 5 == E
+					case 54 : // 6 == F
+					case 55 : // 7 == Gb
+					case 56 : // 8 == G
+					case 57 : // 9 == Ab
+						keyThatWasPressed = String.fromCharCode(event.keyCode);
+						currentKeyIndex = event.keyCode - 49;
+						trace("desiredKey: " + keyThatWasPressed + " " + "(" + keyCode  + ")" + " was requested from index " + currentKeyIndex);
+						break;
+					
+					case 48 : // 0 == A
+						trace(event.keyCode)
+						currentKeyIndex = 9;
+						break;
+					
+					case 189 : // 11 or - == Bb
+						trace(event.keyCode)
+						currentKeyIndex = 10;
+						break;
+					
+					case 187 : // 12 or = == B
+						trace(event.keyCode)
+						currentKeyIndex = 11;
 						break;
 				}
+				
+				trace("currentKeyIndex: " + currentKeyIndex);
+				keySlider.value = currentKeyIndex;
+				setupChordNames();
 			}
 
-			private function setupChordNames():void {
-
-				crdNamesForSelectedKey = allKeys[allSimpleMapKeys[currentKeyIndex]];
-				crdVars.forEach(function (item:*, index:int, array:Array):void{
-					this[item] = crdNamesForSelectedKey[index];
-				}, this);
-			}
-			
 			protected function onSliderChange(event:Event):void {
-				currentKeyIndex = event.target.value - 1; 
+				currentKeyIndex = event.target.value;
 				setupChordNames();
 			}
 			
 			private function keySliderDataTipFormatter(value:Number):Object {
-				return allSimpleMapKeys[keySlider.value-1];
+//				var keyAsString:String = allSimpleMapKeys[keySlider.value];
+//				var idx:int = allSimpleMapKeys.indexOf(keyAsString);
+//				return keyAsString + "[" + idx + "]"; 
+				return allSimpleMapKeys[keySlider.value]; 
 			}
 		]]>
 	</fx:Script>
 
 	<s:SkinnableContainer id="bg" skinClass="skins.AppBGSkin" >
-		<s:HSlider id="keySlider" minimum="1" maximum="12" x="154" y="528" change="onSliderChange(event)" value="0" dataTipFormatFunction="keySliderDataTipFormatter" />
+		<s:HSlider id="keySlider" minimum="0" maximum="11" x="154" y="528" change="onSliderChange(event)" value="0" dataTipFormatFunction="keySliderDataTipFormatter" />
 		<s:Label id="lblInstructions" x="156" y="547" width="98" height="111" fontSize="12"
 				 text="{instructions}"/>
 	</s:SkinnableContainer>
@@ -117,7 +188,6 @@
 		<s:Label id="crd5a" text="{crdN5}" x="40" y="402" fontSize="{fontSizeBig}" fontWeight="bold" color="{crdColor}" />
 		<s:Label id="crd5b" text="{crdN5}" x="165" y="98" fontSize="{fontSizeBig}" fontWeight="bold" color="{crdColor}" />
 		<s:Label id="crd6" text="{crdN6}" x="165" y="221" fontSize="{fontSizeSmall}" fontWeight="bold" color="{crdColor}" />
-		
 	</s:Group>
 
 </s:WindowedApplication>
