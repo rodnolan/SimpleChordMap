@@ -4,7 +4,6 @@
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
 					   minWidth="281"
 					   minHeight="708"
-					   creationComplete="onCreationComplete(event)"
 					   status="based on the maps found at http://www.chordmaps.com" 
 					   xmlns:parsley="http://www.spicefactory.org/parsley">
 	<fx:Declarations>
@@ -12,6 +11,9 @@
 			<parsley:FlexConfig type="{ parsleyConfig }" />
 		</parsley:ContextBuilder>
 		<parsley:Configure />
+		<parsley:FastInject injectionComplete="init()">
+			<parsley:Inject property="keysModel" type="{KeysModel}"/> 
+		</parsley:FastInject>
 	</fx:Declarations>
 	<fx:Style source="/styles/desktop.css" />
 	
@@ -21,8 +23,6 @@
 			
 			import model.KeysModel;
 			import model.UIModel;
-			
-			import mx.events.FlexEvent;
 			
 			[Bindable]
 			private var crdN1:String;
@@ -48,40 +48,21 @@
 			[MessageDispatcher]
 			public var dispatcher:Function;
 			
-			private var allKeys:Dictionary; 
+			private var currentKeyIndex:uint = 0;
+			private var crdNamesForSelectedKey:Array;
+			private var crdVars:Array; 
 			
-			private var allSimpleMapKeys:Array;
-			
-			protected function onCreationComplete(event:FlexEvent):void {
-				allSimpleMapKeys = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
+			[Init]
+			protected function init():void {
 				crdVars = [ "crdN1", "crdN2", "crdN3", "crdN4", "crdN5", "crdN6" ];
-				
-				allKeys = new Dictionary();
-				
-				allKeys["C"] = ["C","Dm","Em","F","G","Am"];
-				allKeys["Db"] = ["Db","Ebm","Fm","Gb","Ab","Bbm"];
-				allKeys["D"] = ["D","Em","F#m","Gm","A","Bm"];
-				allKeys["Eb"] = ["Eb","Fm","Gm","Ab","Bb","Cm"];
-				allKeys["E"] = ["E","F#m","G#m","A","B","C#m"];
-				allKeys["F"] = ["F","Gm","Am","Bb","C","Dm"];
-				allKeys["Gb"] = ["Gb","Abm","Bbm","C","D","Ebm"];
-				allKeys["G"] = ["G","Am","Bm","C","D","Em"];
-				allKeys["Ab"] = ["Ab","Bbm","Cm","Db","Eb","Fm"];
-				allKeys["A"] = ["A","Bm","C#m","D","E","F#m"];
-				allKeys["Bb"] = ["Bb","Cm","Dm","Eb","F","Gm"];
-				allKeys["B"] = ["B","C#m","D#m","E","F#","G#m"];
-				
 				addKeyListeners();
 				chordFields.setFocus();
 				setupChordNames();
 			}
 			
-			private var currentKeyIndex:uint = 0;
-			private var crdNamesForSelectedKey:Array;
-			private var crdVars:Array; 
 			private function setupChordNames():void {
-				if (currentKeyIndex >= 0 && currentKeyIndex < allSimpleMapKeys.length) {
-					crdNamesForSelectedKey = allKeys[allSimpleMapKeys[currentKeyIndex]];
+				if (currentKeyIndex >= 0 && currentKeyIndex < keysModel.chromaticScale.length) {
+					crdNamesForSelectedKey = keysModel.chordsForKey[keysModel.chromaticScale[currentKeyIndex]];
 					crdVars.forEach(function (item:*, index:int, array:Array):void{
 						this[item] = crdNamesForSelectedKey[index];
 					}, this);
@@ -99,10 +80,10 @@
 					if (currentKeyIndex > 0) {
 						currentKeyIndex--;
 					} else { 
-						currentKeyIndex = allSimpleMapKeys.length-1;
+						currentKeyIndex = keysModel.chromaticScale.length-1;
 					}
 				} else if (intervalSize > 0) { // going forwards
-					if (currentKeyIndex < allSimpleMapKeys.length-1) {
+					if (currentKeyIndex < keysModel.chromaticScale.length-1) {
 						currentKeyIndex++;
 					} else { 
 						currentKeyIndex = 0;
@@ -112,7 +93,7 @@
 			}
 			[MessageHandler(selector="name")]
 			public function keyChangeByName(event:KeyChangeMessage):void {
-				currentKeyIndex = allSimpleMapKeys.indexOf(event.keyName);
+				currentKeyIndex = keysModel.chromaticScale.indexOf(event.keyName);
 				setupChordNames();
 			}
 			[MessageHandler(selector="index")]
@@ -192,7 +173,7 @@
 			}
 			
 			private function keySliderDataTipFormatter(value:Number):Object {
-				return allSimpleMapKeys[keySlider.value]; 
+				return keysModel.chromaticScale[keySlider.value]; 
 			}
 		]]>
 	</fx:Script>
