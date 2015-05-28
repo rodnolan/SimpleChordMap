@@ -24,7 +24,7 @@
         <s:State name="normal" />
         <s:State name="disabled" />
     </s:states>
-	<s:BitmapImage includeIn="normal" source="@Embed('resources/images/SimpleChordMapBackground.png')" width="281" height="668" />
+	<s:BitmapImage includeIn="normal" source="@Embed('/resources/images/SimpleChordMapBackground.png')" width="281" height="668" />
     
     <!--
         Note: setting the minimum size to 0 here so that changes to the host component's
