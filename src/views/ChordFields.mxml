@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:parsley="http://www.spicefactory.org/parsley">
+	<fx:Declarations>
+		<parsley:Configure />
+		<parsley:FastInject injectionComplete="pm.init(this)">
+			<parsley:Inject property="pm" type="{ChordFieldsPM}"/> 
+		</parsley:FastInject>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			public var crdN1:String;
+			[Bindable]
+			public var crdN2:String;
+			[Bindable]
+			public var crdN3:String;
+			[Bindable]
+			public var crdN4:String;
+			[Bindable]
+			public var crdN5:String;
+			[Bindable]
+			public var crdN6:String;
+			
+			[Inject]
+			public var pm:ChordFieldsPM;
+		]]>
+	</fx:Script>
+	
+	<s:Label id="crd1"  text="{crdN1}" x="23" y="536"  styleName="rootCrd"   />
+	<s:Label id="crd2a" text="{crdN2}" x="40" y="31"   styleName="minorCrd"  />
+	<s:Label id="crd2b" text="{crdN2}" x="165" y="345" styleName="minorCrd"  />
+	<s:Label id="crd3"  text="{crdN3}" x="40" y="153"  styleName="minorCrd"  />
+	<s:Label id="crd4"  text="{crdN4}" x="40" y="277"  styleName="majorCrd"  />
+	<s:Label id="crd5a" text="{crdN5}" x="40" y="402"  styleName="majorCrd"  />
+	<s:Label id="crd5b" text="{crdN5}" x="165" y="98"  styleName="majorCrd"  />
+	<s:Label id="crd6"  text="{crdN6}" x="165" y="221" styleName="minorCrd"  />
+</s:Group>

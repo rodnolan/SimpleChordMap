@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer skinClass="skins.AppBGSkin" 
+					  xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					  xmlns:s="library://ns.adobe.com/flex/spark" 
+					  xmlns:mx="library://ns.adobe.com/flex/mx" 
+					  xmlns:parsley="http://www.spicefactory.org/parsley">
+	<fx:Declarations>
+		<parsley:Configure />
+		<parsley:FastInject injectionComplete="pm.init(this)">
+			<parsley:Inject property="pm" type="{SliderContainerPM}"/> 
+		</parsley:FastInject>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			[Inject]
+			public var pm:SliderContainerPM;
+		]]>
+	</fx:Script>
+	
+	<s:HSlider id="keySlider" minimum="0" maximum="11" x="154" y="528" value="0" /> 
+	<s:Label id="lblInstructions" x="156" y="547" width="98" height="111" fontSize="12"
+			 text="Drag the slider button, use your arrow keys or type the name of a major key to generate a simple map"/>
+</s:SkinnableContainer>

@@ -5,195 +5,37 @@
 					   minWidth="281"
 					   minHeight="708"
 					   status="based on the maps found at http://www.chordmaps.com" 
-					   xmlns:parsley="http://www.spicefactory.org/parsley">
+					   xmlns:parsley="http://www.spicefactory.org/parsley" 
+					   xmlns:views="views.*"
+					   >
+	<fx:Script>
+		<![CDATA[
+			import mx.logging.LogEventLevel;
+		]]>
+	</fx:Script>
+	
 	<fx:Declarations>
+<!--		<s:TraceTarget 
+			includeCategory="true" 
+			includeLevel="true" 
+			includeTime="true"
+			level="{LogEventLevel.DEBUG}"
+			>
+			<s:filters>
+				<fx:String>org.spicefactory.parsley.*</fx:String>
+			</s:filters>
+		</s:TraceTarget>-->
+		
 		<parsley:ContextBuilder>
 			<parsley:FlexConfig type="{ parsleyConfig }" />
 		</parsley:ContextBuilder>
 		<parsley:Configure />
-		<parsley:FastInject injectionComplete="init()">
-			<parsley:Inject property="keysModel" type="{KeysModel}"/> 
-		</parsley:FastInject>
 	</fx:Declarations>
-	<fx:Style source="/styles/desktop.css" />
 	
-	<fx:Script>
-		<![CDATA[
-			import message.KeyChangeMessage;
-			
-			import model.KeysModel;
-			import model.UIModel;
-			
-			[Bindable]
-			private var crdN1:String;
-			[Bindable]
-			private var crdN2:String;
-			[Bindable]
-			private var crdN3:String;
-			[Bindable]
-			private var crdN4:String;
-			[Bindable]
-			private var crdN5:String;
-			[Bindable]
-			private var crdN6:String;
-			
-			[Bindable]
-			[Inject]
-			public var uiModel:UIModel;
+	<fx:Style source="/styles/desktop.css" />
 
-			[Bindable]
-			[Inject]
-			public var keysModel:KeysModel;
-			
-			[MessageDispatcher]
-			public var dispatcher:Function;
-			
-			private var currentKeyIndex:uint = 0;
-			private var crdNamesForSelectedKey:Array;
-			private var crdVars:Array; 
-			
-			[Init]
-			protected function init():void {
-				crdVars = [ "crdN1", "crdN2", "crdN3", "crdN4", "crdN5", "crdN6" ];
-				addKeyListeners();
-				chordFields.setFocus();
-				setupChordNames();
-			}
-			
-			private function setupChordNames():void {
-				if (currentKeyIndex >= 0 && currentKeyIndex < keysModel.chromaticScale.length) {
-					crdNamesForSelectedKey = keysModel.chordsForKey[keysModel.chromaticScale[currentKeyIndex]];
-					crdVars.forEach(function (item:*, index:int, array:Array):void{
-						this[item] = crdNamesForSelectedKey[index];
-					}, this);
-				}
-			}
-			
-			private function addKeyListeners():void {
-				this.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-			}
-			
-			[MessageHandler(selector="interval")]
-			public function keyChangeByInterval(event:KeyChangeMessage):void {
-				var intervalSize:int = event.intervalSize;
-				if (intervalSize < 0) { // going backwards
-					if (currentKeyIndex > 0) {
-						currentKeyIndex--;
-					} else { 
-						currentKeyIndex = keysModel.chromaticScale.length-1;
-					}
-				} else if (intervalSize > 0) { // going forwards
-					if (currentKeyIndex < keysModel.chromaticScale.length-1) {
-						currentKeyIndex++;
-					} else { 
-						currentKeyIndex = 0;
-					}					
-				}
-				setupChordNames();
-			}
-			[MessageHandler(selector="name")]
-			public function keyChangeByName(event:KeyChangeMessage):void {
-				currentKeyIndex = keysModel.chromaticScale.indexOf(event.keyName);
-				setupChordNames();
-			}
-			[MessageHandler(selector="index")]
-			public function keyChangeByIndex(event:KeyChangeMessage):void {
-				currentKeyIndex = event.keyIndex;
-				setupChordNames();
-			}
-			
-			private function onKeyDown(event:KeyboardEvent):void {
-				var keyCode:int = event.keyCode;
-				var desiredKey:String; 
-				var keyThatWasPressed:String;
-				trace(event.keyCode);
-
-				switch (keyCode) {
-					case Keyboard.C : 
-					case Keyboard.D : 
-					case Keyboard.E : 
-					case Keyboard.F :  
-					case Keyboard.G : 
-					case Keyboard.A :  
-					case Keyboard.B : 
-						dispatcher(KeyChangeMessage.byKeyName(String.fromCharCode(event.keyCode)));
-						break;
-
-					case 188 : // < == b
-						dispatcher(KeyChangeMessage.byInterval(-1));
-						break;
-					
-					case 190 : // > == #
-						dispatcher(KeyChangeMessage.byInterval(1));
-						break;
-					
-					case 37 : // LEFT
-					case 40 : // DOWN
-						dispatcher(KeyChangeMessage.byInterval(-1));
-						break;
-					
-					case 38 : // UP
-					case 39 : // RIGHT
-						dispatcher(KeyChangeMessage.byInterval(1));
-						break;
-
-					case 49 : // 1 == C
-					case 50 : // 2 == Db
-					case 51 : // 3 == D
-					case 52 : // 4 == Eb
-					case 53 : // 5 == E
-					case 54 : // 6 == F
-					case 55 : // 7 == Gb
-					case 56 : // 8 == G
-					case 57 : // 9 == Ab
-						dispatcher(KeyChangeMessage.byKeyIndex(event.keyCode - 49));
-						break;
-					
-					case 48 : // 0 == A
-						dispatcher(KeyChangeMessage.byKeyIndex(9));
-						break;
-					
-					case 189 : // 11 or - == Bb
-						dispatcher(KeyChangeMessage.byKeyIndex(10));
-						break;
-					
-					case 187 : // 12 or = == B
-						dispatcher(KeyChangeMessage.byKeyIndex(11));
-						break;
-				}
-				
-				//trace("currentKeyIndex: " + currentKeyIndex);
-				keySlider.value = currentKeyIndex;
-				setupChordNames();
-			}
-
-			protected function onSliderChange(event:Event):void {
-				currentKeyIndex = event.target.value;
-				setupChordNames();
-			}
-			
-			private function keySliderDataTipFormatter(value:Number):Object {
-				return keysModel.chromaticScale[keySlider.value]; 
-			}
-		]]>
-	</fx:Script>
-
-
-	<s:SkinnableContainer id="bg" skinClass="skins.AppBGSkin" >
-		<s:HSlider id="keySlider" minimum="0" maximum="11" x="154" y="528" change="onSliderChange(event)" value="0" dataTipFormatFunction="keySliderDataTipFormatter" />
-		<s:Label id="lblInstructions" x="156" y="547" width="98" height="111" fontSize="12"
-				 text="{uiModel.instructions}"/>
-	</s:SkinnableContainer>
-		
-	<s:Group id="chordFields">
-		<s:Label id="crd1"  text="{crdN1}" x="23" y="536"  styleName="rootCrd"   />
-		<s:Label id="crd2a" text="{crdN2}" x="40" y="31"   styleName="minorCrd"  />
-		<s:Label id="crd2b" text="{crdN2}" x="165" y="345" styleName="minorCrd"  />
-		<s:Label id="crd3"  text="{crdN3}" x="40" y="153"  styleName="minorCrd"  />
-		<s:Label id="crd4"  text="{crdN4}" x="40" y="277"  styleName="majorCrd"  />
-		<s:Label id="crd5a" text="{crdN5}" x="40" y="402"  styleName="majorCrd"  />
-		<s:Label id="crd5b" text="{crdN5}" x="165" y="98"  styleName="majorCrd"  />
-		<s:Label id="crd6"  text="{crdN6}" x="165" y="221" styleName="minorCrd"  />
-	</s:Group>
+	<views:SliderContainer id="sliderContainer" />
+	
+	<views:ChordFields id="chordFields" />
 
 </s:WindowedApplication>
