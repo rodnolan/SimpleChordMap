@@ -1,31 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
-					   xmlns:s="library://ns.adobe.com/flex/spark" 
-					   xmlns:mx="library://ns.adobe.com/flex/mx"
-					   minWidth="281"
+					   xmlns:s="library://ns.adobe.com/flex/spark"
+					   minWidth="481"
 					   minHeight="708"
 					   status="based on the maps found at http://www.chordmaps.com" 
 					   xmlns:parsley="http://www.spicefactory.org/parsley" 
 					   xmlns:views="views.*"
 					   >
-	<fx:Script>
-		<![CDATA[
-			import mx.logging.LogEventLevel;
-		]]>
-	</fx:Script>
-	
 	<fx:Declarations>
-<!--		<s:TraceTarget 
-			includeCategory="true" 
-			includeLevel="true" 
-			includeTime="true"
-			level="{LogEventLevel.DEBUG}"
-			>
-			<s:filters>
-				<fx:String>org.spicefactory.parsley.*</fx:String>
-			</s:filters>
-		</s:TraceTarget>-->
-		
 		<parsley:ContextBuilder>
 			<parsley:FlexConfig type="{ parsleyConfig }" />
 		</parsley:ContextBuilder>
@@ -37,5 +19,7 @@
 	<views:SliderContainer id="sliderContainer" />
 	
 	<views:ChordFields id="chordFields" />
+
+	<views:ChordProgressionsContainer id="chordProgressionsContainer" width="200" height="708" right="0" />
 
 </s:WindowedApplication>

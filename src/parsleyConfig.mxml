@@ -1,8 +1,6 @@
 <Objects 
-		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 xmlns:fx="http://ns.adobe.com/mxml/2009"
-		 xmlns:s="library://ns.adobe.com/flex/spark"
-		 xmlns="http://www.spicefactory.org/parsley" 
+		 xmlns="http://www.spicefactory.org/parsley"
 		 xmlns:model="model.*" 
 		 xmlns:views="views.*" 
 		 xmlns:controllers="controllers.*"
@@ -13,6 +11,7 @@
 		<controllers:KeyController id="keyController" />
 		<views:SliderContainerPM id="sliderContainerPM" />
 		<views:ChordFieldsPM id="chordFieldsPM" />
+		<views:ChordProgressionsPM id="chordProgressionsPM" />
 	</fx:Declarations>
 	
 </Objects>

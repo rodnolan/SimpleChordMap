@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 xmlns:parsley="http://www.spicefactory.org/parsley">
-	<fx:Declarations>
-		<parsley:Configure />
-		<parsley:FastInject injectionComplete="pm.init(this)">
-			<parsley:Inject property="pm" type="{ChordFieldsPM}"/> 
-		</parsley:FastInject>
-	</fx:Declarations>
-	<fx:Script>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:parsley="http://www.spicefactory.org/parsley" xmlns:views="views.*">
+    <fx:Declarations>
+        <parsley:Configure/>
+        <parsley:FastInject injectionComplete="pm.init(this)">
+            <parsley:Inject property="pm" type="{ChordFieldsPM}"/>
+        </parsley:FastInject>
+    </fx:Declarations>
+    <fx:Script>
 		<![CDATA[
-			[Bindable]
-			public var crdN1:String;
-			[Bindable]
-			public var crdN2:String;
-			[Bindable]
-			public var crdN3:String;
-			[Bindable]
-			public var crdN4:String;
-			[Bindable]
-			public var crdN5:String;
-			[Bindable]
-			public var crdN6:String;
-			
-			[Inject]
-			public var pm:ChordFieldsPM;
-		]]>
+        import vo.Chord;
+
+        [Bindable]
+        public var crd1:Chord;
+        [Bindable]
+        public var crd2:Chord;
+        [Bindable]
+        public var crd3:Chord;
+        [Bindable]
+        public var crd4:Chord;
+        [Bindable]
+        public var crd5:Chord;
+        [Bindable]
+        public var crd6:Chord;
+
+        [Inject]
+        public var pm:ChordFieldsPM;
+        ]]>
 	</fx:Script>
-	
-	<s:Label id="crd1"  text="{crdN1}" x="23" y="536"  styleName="rootCrd"   />
-	<s:Label id="crd2a" text="{crdN2}" x="40" y="31"   styleName="minorCrd"  />
-	<s:Label id="crd2b" text="{crdN2}" x="165" y="345" styleName="minorCrd"  />
-	<s:Label id="crd3"  text="{crdN3}" x="40" y="153"  styleName="minorCrd"  />
-	<s:Label id="crd4"  text="{crdN4}" x="40" y="277"  styleName="majorCrd"  />
-	<s:Label id="crd5a" text="{crdN5}" x="40" y="402"  styleName="majorCrd"  />
-	<s:Label id="crd5b" text="{crdN5}" x="165" y="98"  styleName="majorCrd"  />
-	<s:Label id="crd6"  text="{crdN6}" x="165" y="221" styleName="minorCrd"  />
+    <views:ChordRenderer id="chordRenderer1" chord="{crd1}" style="rootCrd" x="23" y="536"/>
+    <views:ChordRenderer id="chordRenderer2a" chord="{crd2}" style="minorCrd" x="40" y="31"/>
+    <views:ChordRenderer id="chordRenderer2b" chord="{crd2}" style="minorCrd" x="165" y="345"/>
+    <views:ChordRenderer id="chordRenderer3" chord="{crd3}" style="minorCrd" x="40" y="153"/>
+    <views:ChordRenderer id="chordRenderer4" chord="{crd4}" style="majorCrd" x="40" y="277"/>
+    <views:ChordRenderer id="chordRenderer5a" chord="{crd5}" style="majorCrd" x="40" y="402"/>
+    <views:ChordRenderer id="chordRenderer5b" chord="{crd5}" style="majorCrd" x="165" y="98"/>
+    <views:ChordRenderer id="chordRenderer6" chord="{crd6}" style="minorCrd" x="165" y="221"/>
 </s:Group>

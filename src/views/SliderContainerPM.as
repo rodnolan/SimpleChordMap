@@ -49,7 +49,7 @@ package views {
 		
 		[MessageHandler]
 		public function updateSliderValue(msg:KeyChangedMessage):void {
-			trace("updating the slider to reflect the current key " + msg.keyIndex);
+			trace("updating the slider to key index [" + msg.keyIndex + "]");
 			this.view.keySlider.value = msg.keyIndex;
 		}
 	}

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- Created by rodnolan on 15-07-13. -->
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+    <fx:Script>
+        <![CDATA[
+        import vo.Chord;
+
+        [Bindable]
+        public var chord:Chord;
+
+        [Bindable]
+        public var style:String;
+        ]]>
+    </fx:Script>
+    <s:Label text="{chord.name}" styleName="{style}"/>
+</s:Group>
