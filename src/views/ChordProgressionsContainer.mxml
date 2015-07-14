@@ -25,6 +25,7 @@
 
 	<s:Label text="Primary Progression" />
 	<s:List id="lstCurrentProgression" dataProvider="{pm.currentChordProgression}" />
+	<s:Button id="clearBtn" label="clear" />
 
 	<s:Label text="Transposed Progression" />
 	<s:List id="lstTransposedProgression" dataProvider="{pm.transposedProgression}" />
