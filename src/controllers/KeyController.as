@@ -2,7 +2,6 @@ package controllers {
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 
-	import message.ChordProgressionMessage;
 	import message.KeyChangeRequestedMessage;
 	import message.KeyChangedMessage;
 

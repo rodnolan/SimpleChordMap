@@ -6,10 +6,9 @@ package views {
 
 	import message.ChordProgressionMessage;
 	import message.KeyChangeRequestedMessage;
+	import message.KeyChangedMessage;
 
 	public class ChordFieldsPM {
-		import message.KeyChangedMessage;
-
 		private var view:ChordFields;
 		private var fieldNames:Array;
 

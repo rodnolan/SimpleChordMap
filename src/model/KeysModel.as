@@ -1,9 +1,10 @@
 package model {
 
-import flash.utils.Dictionary;
-import vo.Chord;
+	import flash.utils.Dictionary;
 
-public class KeysModel {
+	import vo.Chord;
+
+	public class KeysModel {
 		public var chromaticScale:Array;
 		public var chordsForKey:Dictionary;
 		public var currentKeyIndex:uint;
